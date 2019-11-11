@@ -8,11 +8,11 @@
 </template>
 
 <script>
-import Input from "./mixins/Input";
-import FormGroup from "./FormGroup";
+import Input from '@/components/form/mixins/Input';
+import FormGroup from './FormGroup';
 
 export default {
-  name: "TextArea",
+  name: 'TextArea',
   components: { FormGroup },
   mixins: [Input]
 };

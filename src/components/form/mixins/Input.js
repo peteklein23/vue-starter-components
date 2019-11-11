@@ -1,13 +1,20 @@
 export default {
   inheritAttrs: false,
-  data: {
-    hasChanged: false
+  data() {
+    return {
+      hasChanged: false
+    };
   },
   props: {
     value: {
-      type: String,
+      type: [String, Number],
       required: false,
-      default: ""
+      default: ''
+    },
+    validate: {
+      type: Function,
+      required: false,
+      default: () => true
     }
   },
   computed: {
@@ -16,15 +23,12 @@ export default {
         ...this.$listeners,
         input: this.handleInput
       };
-    },
-    required() {
-      return this.$attrs.hasOwnProperty("required");
     }
   },
   methods: {
     handleInput(event) {
       this.hasChanged = true;
-      this.$emit("input", event.target.value);
+      this.$emit('input', event.target.value);
     }
   }
 };
